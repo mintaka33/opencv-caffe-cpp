@@ -23,11 +23,11 @@ static const char* about =
 
 static const char* params =
 "{ help           | false | print usage         }"
-"{ cfg            |       | model configuration }"
-"{ model          |       | model weights       }"
+"{ cfg            | yolov3.cfg | model configuration }"
+"{ model          | yolov3.weights | model weights       }"
 "{ camera_device  | 0     | camera device number}"
-"{ source         |       | video or image for detection}"
-"{ out            |       | path to output video file}"
+"{ source         | cat.jpg | video or image for detection}"
+"{ out            | out.jpg | path to output video file}"
 "{ fps            | 3     | frame per second }"
 "{ style          | box   | box or line style draw }"
 "{ min_confidence | 0.24  | min confidence      }"

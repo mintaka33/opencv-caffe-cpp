@@ -5,3 +5,4 @@ x64
 *.db
 *.opendb
 opencv_caffe/object_detection/ReadMe.txt
+opencv_caffe/object_detection/object_detection.vcxproj.user
