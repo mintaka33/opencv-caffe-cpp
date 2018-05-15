@@ -1,0 +1,6 @@
+.vs
+ipch
+x64
+
+*.db
+*.opendb
