@@ -5,6 +5,7 @@ x64
 *.db
 *.opendb
 *.weights
+*.mp4
 
 out.jpg
 opencv_caffe/object_detection/ReadMe.txt
