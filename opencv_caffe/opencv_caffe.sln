@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "object_detection_yolov3", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "object_detection_ssd", "object_detection_ssd\object_detection_ssd.vcxproj", "{858E0BFA-E87E-45F8-93A1-9B1FAE24BE91}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "object_detection_class", "object_detection_class\object_detection_class.vcxproj", "{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{858E0BFA-E87E-45F8-93A1-9B1FAE24BE91}.Release|x64.Build.0 = Release|x64
 		{858E0BFA-E87E-45F8-93A1-9B1FAE24BE91}.Release|x86.ActiveCfg = Release|Win32
 		{858E0BFA-E87E-45F8-93A1-9B1FAE24BE91}.Release|x86.Build.0 = Release|Win32
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Debug|x64.ActiveCfg = Debug|x64
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Debug|x64.Build.0 = Debug|x64
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Debug|x86.ActiveCfg = Debug|Win32
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Debug|x86.Build.0 = Debug|Win32
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Release|x64.ActiveCfg = Release|x64
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Release|x64.Build.0 = Release|x64
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Release|x86.ActiveCfg = Release|Win32
+		{2D80FAF6-BCF7-4160-BDB2-D99B58BB2F9B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
