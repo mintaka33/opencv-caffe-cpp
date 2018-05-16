@@ -12,9 +12,20 @@ int main()
     DNNDetector detector;
     detector.initNet(cfgFile, modelFile, "caffe");
 
+    // Open a video file or an image file or a camera stream.
+    String inputFile = "test.mp4";
+    VideoCapture cap;
+    cap.open(inputFile);
+
     Mat frame;
-    for (int i=0; i<1; i++)
+    for (int i=0; i<100; i++)
     {
+        cap >> frame;
+        if (frame.empty())
+        {
+            break;
+        }
+
         detector.detectFrame(&frame);
     }
 
