@@ -57,7 +57,7 @@ int main(int argc, char** argv)
     if (argc == 1 || parser.has("help"))
     {
         parser.printMessage();
-        return 0;
+        //return 0;
     }
 
     confThreshold = parser.get<float>("thr");
