@@ -20,7 +20,7 @@ const char* keys =
 "{ config c    | yolov3.cfg | Path to a text file of model contains network configuration. "
 "It could be a file with extensions .prototxt (Caffe), .pbtxt (TensorFlow), .cfg (Darknet).}"
 "{ framework f | | Optional name of an origin framework of the model. Detect it automatically if it does not set. }"
-"{ classes     | | Optional path to a text file with names of classes to label detected objects. }"
+"{ classes     | coco.names | Optional path to a text file with names of classes to label detected objects. }"
 "{ mean        | | Preprocess input image by subtracting mean values. Mean values should be in BGR order and delimited by spaces. }"
 "{ scale       |  0.00392 | Preprocess input image by multiplying on a scale factor. }"
 "{ width       | 416 | Preprocess input image by resizing to a specific width. }"
