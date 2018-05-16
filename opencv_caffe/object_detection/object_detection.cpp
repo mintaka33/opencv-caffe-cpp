@@ -23,15 +23,15 @@ static const char* about =
 
 static const char* params =
 "{ help           | false | print usage         }"
-"{ cfg            | yolov3.cfg | model configuration }"
-"{ model          | yolov3.weights | model weights       }"
+"{ cfg            | yolov2.cfg | model configuration }"
+"{ model          | yolov2.weights | model weights       }"
 "{ camera_device  | 0     | camera device number}"
 "{ source         | cat.jpg | video or image for detection}"
 "{ out            | out.jpg | path to output video file}"
 "{ fps            | 3     | frame per second }"
 "{ style          | box   | box or line style draw }"
 "{ min_confidence | 0.24  | min confidence      }"
-"{ class_names    |       | File with class names, [PATH-TO-DARKNET]/data/coco.names }";
+"{ class_names    | coco.names | File with class names, [PATH-TO-DARKNET]/data/coco.names }";
 
 int main(int argc, char** argv)
 {

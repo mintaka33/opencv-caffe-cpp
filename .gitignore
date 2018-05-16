@@ -4,5 +4,8 @@ x64
 
 *.db
 *.opendb
+*.weights
+
+out.jpg
 opencv_caffe/object_detection/ReadMe.txt
 opencv_caffe/object_detection/object_detection.vcxproj.user
