@@ -7,5 +7,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LocalDebuggerEnvironment>PATH=$(PATH);$(OPENCV_DIR)\bin</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>--target 0</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>
