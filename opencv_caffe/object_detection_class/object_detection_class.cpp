@@ -11,6 +11,7 @@ int main()
 
     DNNDetector detector;
     detector.initNet(cfgFile, modelFile, "caffe");
+    std::vector<ObjectInfo> objInfo;
 
     // Open a video file or an image file or a camera stream.
     String inputFile = "test.mp4";
@@ -26,7 +27,13 @@ int main()
             break;
         }
 
-        detector.detectFrame(&frame);
+        std::cout << "******** Frame # " << i << std::endl;
+
+        objInfo = detector.detectFrame(&frame);
+        for (auto o: objInfo)
+        {
+            std::cout <<o.name<<": "<< "[" << o.left << ", " << o.top << ", " << o.right << ", " << o.bottom << "]" << std::endl;
+        }
     }
 
     return 0;

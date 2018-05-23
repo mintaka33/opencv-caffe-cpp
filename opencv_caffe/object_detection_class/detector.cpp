@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "detector.h"
 
+
 DNNDetector::DNNDetector()
 {
 
@@ -20,7 +21,7 @@ int DNNDetector::initNet(String cfgFile, String modelFile, String framework)
     return 0;
 }
 
-int DNNDetector::detectFrame(Mat* inputFrame)
+std::vector<ObjectInfo>& DNNDetector::detectFrame(Mat* inputFrame)
 {
     Mat frame, blob;
     frame = *inputFrame;
@@ -42,9 +43,23 @@ int DNNDetector::detectFrame(Mat* inputFrame)
     std::vector<Mat> outs;
     net.forward(outs, getOutputsNames(net));
 
+    objects.clear();
+
     postprocess(frame, outs, net);
 
-    return 0;
+    return objects;
+}
+
+void DNNDetector::addObject(int id, int left, int top, int right, int bottom)
+{
+    ObjectInfo obj = {};
+    obj.name = "";
+    obj.left = left;
+    obj.top = top;
+    obj.right = right;
+    obj.bottom = bottom;
+
+    objects.push_back(obj);
 }
 
 std::vector<String> DNNDetector::getOutputsNames(const Net& net)
@@ -83,6 +98,8 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                 int right = (int)data[i + 5];
                 int bottom = (int)data[i + 6];
                 int classId = (int)(data[i + 1]) - 1;  // Skip 0th background class id.
+
+                addObject(classId, left, top, right, bottom);
             }
         }
     }
@@ -103,6 +120,8 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                 int right = (int)(data[i + 5] * frame.cols);
                 int bottom = (int)(data[i + 6] * frame.rows);
                 int classId = (int)(data[i + 1]) - 1;  // Skip 0th background class id.
+
+                addObject(classId, left, top, right, bottom);
             }
         }
     }
@@ -132,6 +151,8 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                     int left = centerX - width / 2;
                     int top = centerY - height / 2;
 
+                    addObject(0, left, top, left + width, top + height);
+
                     classIds.push_back(classIdPoint.x);
                     confidences.push_back((float)confidence);
                     boxes.push_back(Rect(left, top, width, height));
@@ -147,5 +168,7 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
         }
     }
     else
+    {
         CV_Error(Error::StsNotImplemented, "Unknown output layer type: " + outLayerType);
+    }
 }

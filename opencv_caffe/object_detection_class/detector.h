@@ -1,6 +1,8 @@
 #pragma once
 #include "stdafx.h"
 
+#include <string>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -11,6 +13,15 @@
 using namespace cv;
 using namespace dnn;
 
+struct ObjectInfo
+{
+    std::string name;
+    int left;
+    int top;
+    int right;
+    int bottom;
+};
+
 class DNNDetector
 {
 public:
@@ -18,11 +29,12 @@ public:
     ~DNNDetector();
 
     int initNet(String cfgFile, String modelFile, String framework);
-    int detectFrame(Mat* inputFrame);
+    std::vector<ObjectInfo>& detectFrame(Mat* inputFrame);
 
 private:
     std::vector<String> DNNDetector::getOutputsNames(const Net& net);
     void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net);
+    void addObject(int id, int left, int top, int right, int bottom);
 
 private:
     float confThreshold = 0.5; // Confidence threshold
@@ -34,7 +46,8 @@ private:
     int backend = 0; // 0: default C++ backend; 1: Halide language; 2: Intel CVSDK Inference Engine
     int target = 0;  // 0: CPU target (by default); 1: OpenCL"
 
-    std::vector<std::string> classes;
     Net net;
+    std::vector<std::string> classes;
+    std::vector<ObjectInfo> objects;
 };
 
