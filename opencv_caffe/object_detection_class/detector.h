@@ -16,6 +16,7 @@ using namespace dnn;
 struct ObjectInfo
 {
     std::string name;
+    double confidence;
     int left;
     int top;
     int right;
@@ -34,7 +35,7 @@ public:
 private:
     std::vector<String> DNNDetector::getOutputsNames(const Net& net);
     void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net);
-    void addObject(int id, int left, int top, int right, int bottom);
+    void addObject(int id, double confidence, int left, int top, int right, int bottom);
     std::string getName(int classId);
 
 private:

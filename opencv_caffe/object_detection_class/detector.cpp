@@ -54,10 +54,11 @@ std::vector<ObjectInfo>& DNNDetector::detectFrame(Mat* inputFrame)
     return objects;
 }
 
-void DNNDetector::addObject(int id, int left, int top, int right, int bottom)
+void DNNDetector::addObject(int id, double confidence, int left, int top, int right, int bottom)
 {
     ObjectInfo obj = {};
     obj.name = getName(id);
+    obj.confidence = confidence;
     obj.left = left;
     obj.top = top;
     obj.right = right;
@@ -115,7 +116,7 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                 int bottom = (int)data[i + 6];
                 int classId = (int)(data[i + 1]) - 1;  // Skip 0th background class id.
 
-                addObject(classId, left, top, right, bottom);
+                addObject(classId, confidence, left, top, right, bottom);
             }
         }
     }
@@ -137,7 +138,7 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                 int bottom = (int)(data[i + 6] * frame.rows);
                 int classId = (int)(data[i + 1]) - 1;  // Skip 0th background class id.
 
-                addObject(classId, left, top, right, bottom);
+                addObject(classId, confidence, left, top, right, bottom);
             }
         }
     }
@@ -167,7 +168,7 @@ void DNNDetector::postprocess(Mat& frame, const std::vector<Mat>& outs, Net& net
                     int left = centerX - width / 2;
                     int top = centerY - height / 2;
 
-                    addObject(0, left, top, left + width, top + height);
+                    addObject(0, confidence, left, top, left + width, top + height);
 
                     classIds.push_back(classIdPoint.x);
                     confidences.push_back((float)confidence);

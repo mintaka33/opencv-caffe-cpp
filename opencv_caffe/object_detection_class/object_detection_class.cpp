@@ -27,12 +27,13 @@ int main()
             break;
         }
 
-        std::cout << "******** Frame # " << i << std::endl;
-
         objInfo = detector.detectFrame(&frame);
+
+        std::cout << "******** Frame # " << i << std::endl;
         for (auto o: objInfo)
         {
-            std::cout <<o.name<<": "<< "[" << o.left << ", " << o.top << ", " << o.right << ", " << o.bottom << "]" << std::endl;
+            std::cout <<o.name<<" ("<<o.confidence<<") "<<": "<< "[" << o.left << ", " << o.top << ", " 
+                << o.right << ", " << o.bottom << "]" << std::endl;
         }
     }
 
