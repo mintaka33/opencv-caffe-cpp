@@ -4,7 +4,11 @@
 
 DNNDetector::DNNDetector()
 {
-
+    vocNames = { "aeroplane", "bicycle", "bird", "boat",
+        "bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
+        "dog", "horse", "motorbike", "person", "pottedplant", "sheep",
+        "sofa", "train", "tvmonitor", "background",
+    };
 }
 
 DNNDetector::~DNNDetector()
@@ -53,13 +57,25 @@ std::vector<ObjectInfo>& DNNDetector::detectFrame(Mat* inputFrame)
 void DNNDetector::addObject(int id, int left, int top, int right, int bottom)
 {
     ObjectInfo obj = {};
-    obj.name = "";
+    obj.name = getName(id);
     obj.left = left;
     obj.top = top;
     obj.right = right;
     obj.bottom = bottom;
 
     objects.push_back(obj);
+}
+
+std::string DNNDetector::getName(int classId)
+{
+    if (classId >= vocNames.size())
+    {
+        return "Unknown";
+    }
+    else
+    {
+        return vocNames[classId];
+    }
 }
 
 std::vector<String> DNNDetector::getOutputsNames(const Net& net)
