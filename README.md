@@ -19,5 +19,5 @@ yolo v3 model: [yolov3.weights](https://pjreddie.com/media/files/yolov3.weights)
 # Tips
 To load specified opencv DLL, set below environment in Visual Studio: Configuration Properties --> Debugging --> Environment
 ```
-PATH=%PATH%;(OPENCV_DIR)\bin
+PATH=$(PATH);$(OPENCV_DIR)\bin
 ```
