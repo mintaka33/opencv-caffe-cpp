@@ -35,21 +35,14 @@ open the **OpenCV.sln** with Visual Studio in build32 or build64 folder and run 
 
 ```bash
 
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt update
+sudo apt upgrade
 
-sudo apt-get install build-essential cmake pkg-config
-sudo apt-get install libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev
-
-sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
-sudo apt-get install libxvidcore-dev libx264-dev
-
-sudo apt-get install libgtk-3-dev
-
-sudo apt-get install libatlas-base-dev gfortran
-
-sudo apt-get install python2.7-dev python3.5-dev
-
+sudo apt install build-essential cmake pkg-config \
+    libjpeg8-dev libtiff5-dev libjasper-dev libpng12-dev \
+    libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+    libxvidcore-dev libx264-dev libgtk-3-dev \
+    libatlas-base-dev gfortran \
 ```
 
 ## Step2: Download OpenCV source code
