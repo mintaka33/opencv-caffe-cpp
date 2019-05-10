@@ -74,7 +74,8 @@ sudo pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
 cd OPENCV_DIR
 mkdir build
 cd build
-cmake -DWITH_IPP=OFF -DWITH_HDF5=OFF ../opencv-3.1.0
+# -DWITH_IPP=OFF -DWITH_HDF5=OFF
+cmake -DCMAKE_GENERATOR_PLATFORM=x64 -DINSTALL_CREATE_DISTRIB=ON -DWITH_FFMPEG=ON -DBUILD_EXAMPLES=ON ..\code
 ```
 ## Step5: Build OpenCV
 
